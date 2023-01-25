@@ -2,6 +2,7 @@ import { useState } from "react";
 function SpeakersToolbar() {
 
     const [showSessions, setShowSessions] = useState(true);
+    const [theme, setTheme] = useState("light");
     
    const handleChange = (e) => {
         setShowSessions(
@@ -23,7 +24,7 @@ function SpeakersToolbar() {
                      <li className="d-flex flex-column flex-md-row ml-sm-5 ml-0">
                         <strong>Theme</strong>
                         <label className="dropdown">
-                            <select className="form-control theme" value="light">
+                            <select className="form-control theme" value={theme} onChange={(e) => {setTheme(e.target.value);}}>
                                 <option value="light">Light</option>
                                 <option value="dark">Dark</option>
                             </select>
