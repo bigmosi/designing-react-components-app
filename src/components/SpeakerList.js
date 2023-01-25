@@ -1,6 +1,6 @@
 import Speaker from "./Speaker";
 
-function SpeakerList({data}) {
+function SpeakerList({data, showSessions}) {
     return (
         <div className="container speaker-list">
         <div className="row">
@@ -8,7 +8,7 @@ function SpeakerList({data}) {
               data.map(function(speaker) {
                  
                   return (
-                       <Speaker key={speaker.id} speaker={speaker} />
+                       <Speaker key={speaker.id} speaker={speaker} showSessions={showSessions} />
                   );
               })
           }
