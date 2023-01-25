@@ -6,7 +6,12 @@ function SpeakersToolbar() {
   const { theme, setTheme } = useContext(ThemeContext);
   const {
     showSessions,
-    setShowSessions
+    setShowSessions,
+    eventYear,
+    setEventYear,
+    searchQuery,
+    setSearchQuery,
+    EVENT_YEARS,
   } = useContext(SpeakerFilterContext);
 
   return (
@@ -41,6 +46,37 @@ function SpeakersToolbar() {
                   <option value="dark">Dark</option>
                 </select>
               </label>
+            </li>
+            <li>
+                <div className="input-group">
+                    <input 
+                     type="text"
+                     className="form-control" 
+                     placeholder="Search..."
+                     onChange={(e)=>setSearchQuery(e.target.value)}
+                     />
+                     <div className="btn btn-secondary" type="button">
+                        <i className="fa fa-search"></i>
+                     </div>
+                </div>
+            </li>
+            <li className="d-flex flex-column flex-md-row">
+                <strong>Year</strong>
+                <label className="dropmenu">
+                    <select className="form-control" value={eventYear}
+                    onChange={(currentTarget) => {
+                        setEventYear(currentTarget.value)
+                    }}
+                    >
+                      {
+                        EVENT_YEARS.map((function(year) {
+                            return (
+                                <option value={year} key={year}>{year}</option>
+                            );
+                        }))
+                      }  
+                    </select>
+                </label>
             </li>
           </ul>
         </div>
