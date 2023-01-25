@@ -1,16 +1,13 @@
-import { data } from "../../SpeakerData";
-import SpeakerList from "./SpeakerList";
-import Header from "./Header";
 import SpeakersToolbar from "./SpeakersToolbar";
+import SpeakerList from "./SpeakerList";
 
- function Speakers() {
+function Speakers({data,theme, setTheme}) {
     return (
-        <div className="container-fluid">
-           <Header />
-           <SpeakersToolbar /> 
-          <SpeakerList data={data} />
-        </div>
+        <>
+         <SpeakersToolbar theme={theme} setTheme={setTheme} /> 
+         <SpeakerList data={data} />
+        </>
     );
- }
+}
 
- export default Speakers;
+export default Speakers;
