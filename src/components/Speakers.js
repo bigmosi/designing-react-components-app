@@ -1,19 +1,11 @@
 import { data } from "../../SpeakerData";
-import Speaker from "./Speaker";
+import SpeakerList from "./SpeakerList";
 
  function Speakers() {
     return (
-        <div className="container speaker-list">
-          <div className="row">
-            {
-                data.map(function(speaker) {
-                   
-                    return (
-                         <Speaker key={speaker.id} speaker={speaker} />
-                    );
-                })
-            }
-          </div>
+        <div className="container-fluid">
+           <Header />  
+          <SpeakerList data={data} />
         </div>
     );
  }
