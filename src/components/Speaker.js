@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { SpeakerFilterContext } from "../contexts/SpeakerContext";
+import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 
 function Session({ title, room }) {
   return (
@@ -13,18 +13,17 @@ function Sessions({ sessions }) {
   const { eventYear } = useContext(SpeakerFilterContext);
   return (
     <div className="sessionBox card h-250">
-      {
-        sessions.filter(function(session) {
+      {sessions
+        .filter(function (session) {
           return session.eventYear === eventYear;
-        }).
-        map(function(session) {
+        })
+        .map(function (session) {
           return (
             <div className="session w-100" key={session.id}>
               <Session {...session} />
             </div>
           );
-        })
-      }
+        })}
     </div>
   );
 }
@@ -110,10 +109,9 @@ function SpeakerDemographics({
   );
 }
 
-function Speaker({ speaker, onFavoriteToggle }) {
+function Speaker({ speaker, updateRecord }) {
   const { id, first, last, sessions } = speaker;
   const { showSessions } = useContext(SpeakerFilterContext);
-
   return (
     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
       <div className="card card-height p-4 mt-4">

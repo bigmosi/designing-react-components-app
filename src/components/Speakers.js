@@ -1,10 +1,8 @@
 import SpeakersToolbar from "./SpeakersToolbar";
 import SpeakersList from "./SpeakersList";
-import { useState } from "react";
-import { SpeakerFilterProvider } from "../contexts/SpeakerContext";
+import { SpeakerFilterProvider } from "../contexts/SpeakerFilterContext";
 
 function Speakers() {
-    
   return (
     <SpeakerFilterProvider startingShowSessions={false}>
       <SpeakersToolbar />

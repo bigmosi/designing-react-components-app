@@ -1,35 +1,13 @@
-import react, { createContext } from "react";
-import useSpeakerFilter from "../hooks/useSpeakerFilter";
+import { createContext } from "react";
 
-export const SpeakerFilterContext = createContext();
+const SpeakerContext = createContext();
 
-export function SpeakerFilterProvider({children, startingShowSessions = false, startingEventYear = "2019"}) {
-
-    const {
-        showSessions,
-        setShowSessions,
-        eventYear,
-        setEventYear,
-        searchQuery,
-        setSearchQuery,
-        EVENT_YEARS
-    } = useSpeakerFilter(
-        startingShowSessions,
-        startingEventYear,
-        );
-
+function SpeakerProvider({children, speaker, updateRecord}) {
     return (
-        <SpeakerFilterContext.Provider value={{
-            showSessions,
-             setShowSessions,
-             eventYear,
-            setEventYear,
-            searchQuery,
-            setSearchQuery,
-             EVENT_YEARS
-             }}>
-          {children}
-        </SpeakerFilterContext.Provider>
+        <SpeakerContext.Provider value={{speaker, updateRecord}}>
+            {children}
+        </SpeakerContext.Provider>
     );
-
 }
+
+export {SpeakerContext, SpeakerProvider};
