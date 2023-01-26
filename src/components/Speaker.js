@@ -122,7 +122,7 @@ function SpeakerDemographics() {
   );
 }
 
-function Speaker() {
+function Speaker({ speaker, updateRecord, insertRecord, deleteRecord}) {
   const { id, first, last, sessions } = speaker;
   const { showSessions } = useContext(SpeakerFilterContext);
   return (

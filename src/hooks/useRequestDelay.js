@@ -100,6 +100,8 @@ function useRequestDelay(delayTime = 1000, initialData = []) {
     requestStatus,
     error,
     updateRecord,
+    insertRecord,
+    deleteRecord
   };
 }
 
