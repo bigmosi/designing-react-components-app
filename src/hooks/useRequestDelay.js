@@ -25,11 +25,33 @@ function useRequestDelay(delayTime = 1000, initialData = []) {
     delayFunc();
   }, []);
 
-  function updateRecord(recordUpdated, doneCallback) {
+  function updateRecord(record, doneCallback) {
     const originalRecords = [...data];
     const newRecords = data.map(function (rec) {
       return rec.id === recordUpdated.id ? recordUpdated : rec;
     });
+
+    async function delayFunction() {
+      try {
+        setData(newRecords);
+        await delay(delayTime);
+        if (doneCallback) {
+          doneCallback();
+        }
+      } catch (error) {
+        console.log("error thrown inside delayFunction", error);
+        if (doneCallback) {
+          doneCallback();
+        }
+        setData(originalRecords);
+      }
+    }
+    delayFunction();
+  }
+
+  function insertRecord(record, doneCallback) {
+    const originalRecords = [...data];
+    const newRecords = [record, ...data];
 
     async function delayFunction() {
       try {
