@@ -11,3 +11,5 @@ function AuthProvider({children, initialLoggedInUser}) {
         </AuthContext.Provider>
     );
 }
+
+export { AuthProvider };
