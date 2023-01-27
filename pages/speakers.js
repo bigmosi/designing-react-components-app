@@ -1,4 +1,5 @@
 import React from "react";
+import withData from "../src/components/withData";
 
 const Speakers = ({ speakers }) => {
 
@@ -14,18 +15,4 @@ const Speakers = ({ speakers }) => {
     );
 }
 
-function withData(Component) {
-    const speakers  = [
-        { imageSrc: "speaker-1124", name: "Douglas Crockford"},
-        { imageSrc: "speaker-1530", name: "Tamara Baker"},
-        { imageSrc: "speaker-10803", name: "Eugene Chuvrov"},
-    ];
-   
-    return function () {
-        return <Component speakers={speakers}></Component>;
-    }
-}
-
-const EnhancedSpeakerComponent = withData(Speakers);
-
-export default EnhancedSpeakerComponent;
+export default withData(2)(Speakers);
