@@ -1,31 +1,18 @@
-function Speakers() {
-    const speakers  = [
-        { imageSrc: "speaker-1124", name: "Douglas Crockford"},
-        { imageSrc: "speaker-1530", name: "Tamara Baker"},
-        { imageSrc: "speaker-10803", name: "Eugene Chuvrov"},
-    ];
+import React from "react";
+import withData from "../src/components/withData";
 
-    function SpeakersRenderProps(props) {
-        return props.children();
-    }
+const Speakers = ({ speakers }) => {
 
+    
     return (
-        <SpeakersRenderProps>
+        <div>
             {
-                () => {
-                    return (
-                        <div>
-                            {
-                                speakers.map(({name, imageSrc}) => {
-                                    return <img src={`images/${imageSrc}.jpg`} alt={name} key={imageSrc} />
-                                })
-                            }
-                        </div>
-                    );
-                }
+                speakers.map(({name, imageSrc}) => {
+                    return <img src={`images/${imageSrc}.jpg`} alt={name} key={imageSrc} />
+                })
             }
-        </SpeakersRenderProps>
+        </div>
     );
 }
 
-export default Speakers;
+export default withData(2)(Speakers);
