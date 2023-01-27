@@ -18,6 +18,20 @@ function Header({loggedInUser, setLoggedInUser}) {
     );
   }
 
+  function NotLoggedInUser({ loggedInUser, setLoggedInUser }) {
+    return (
+      <button className="btn btn-primary"
+      onClick={(e) => {
+        e.preventDefault();
+        const username = window.prompt("Enter Login Name:", "");
+        setLoggedInUser(username);
+      }} 
+      >
+        Login
+      </button>
+    );
+  }
+
   return (
     <div className="padT4 padB4">
       <div className="container mobile-container">
